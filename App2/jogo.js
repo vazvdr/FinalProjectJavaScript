@@ -1,14 +1,14 @@
-
+//variaveis do jogo
 var altura = 0
 var largura = 0
 var vidas = 1
 var tempo = 15
 
-var criaMosquitoTempo = 1500
+var criaMosquitoTempo = 1500 //coloquei 1500 porque o JavaScript faz a conta em milissegundos
 
 var nivel = window.location.search
 nivel = nivel.replace('?', '')
-
+//niveis do jogo
 if(nivel === 'facil') {
 	//1500
 	criaMosquitoTempo = 1500
@@ -19,6 +19,7 @@ if(nivel === 'facil') {
 	//750
 	criaMosquitoTempo = 750
 }
+//função para ajustar a largura e altura no tamanho do browser
 function ajustaTamanhoPalcoJogo() {
 	altura = window.innerHeight
 	largura = window.innerWidth
@@ -27,7 +28,7 @@ function ajustaTamanhoPalcoJogo() {
 }
 
 ajustaTamanhoPalcoJogo()
-
+//função para contagem regressiva
 var cronometro = setInterval(function() {
 	tempo -= 1
 	if(tempo < 0) {
@@ -38,7 +39,7 @@ var cronometro = setInterval(function() {
 		document.getElementById('cronometro').innerHTML = tempo
 	}	
 },1000)
-
+//função que lança os mosquitos aleatoriamente
 function posicaoRandomica() {
 	//remover o mosquito anterior (caso exista)
 	if(document.getElementById('mosquito')) {
@@ -75,7 +76,7 @@ function posicaoRandomica() {
 }
 function tamanhoAleatorio() {
 	var classe = Math.floor(Math.random() * 3)
-	
+	//função que cria os tamanhos aleatórios
 	switch(classe) {
 		case 0:
 			return 'mosquito1'
@@ -86,7 +87,7 @@ function tamanhoAleatorio() {
 		case 2:
 			return 'mosquito3'
 	}
-}
+} //função para colocar o mosquito virado para esquerda ou direita
 function ladoAleatorio() {
 	var classe = Math.floor(Math.random() * 2)	
 	switch(classe) {
